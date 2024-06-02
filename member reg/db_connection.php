@@ -10,5 +10,6 @@
     if(!$conn){
         die('Connection failed'.mysqli_error());
     }
+ 
 
 ?>

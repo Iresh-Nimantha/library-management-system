@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register Member</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <h2>Register New Member</h2>
+    <form
+      action="register.php"
+      method="POST"
+      onsubmit="return validateRegisterForm()"
+    >
+      <label for="member_id">Member ID:</label>
+      <input
+        type="text"
+        id="member_id"
+        name="reg_member_id"
+        required
+      /><br /><br />
+
+      <label for="fname">First Name:</label>
+      <input type="text" id="fname" name="reg_firstname" required /><br /><br />
+
+      <label for="lname">Last Name:</label>
+      <input type="text" id="lname" name="reg_lastname" required /><br /><br />
+
+      <label for="birthday">Birthday:</label>
+      <input
+        type="text"
+        id="birthday"
+        name="reg_birthday"
+        required
+      /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="reg_email" required /><br /><br />
+
+      <input type="submit" value="Register" />
+    </form>
+    <script src="scripts.js"></script>
+  </body>
+</html>
