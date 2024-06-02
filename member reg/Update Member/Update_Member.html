@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Member</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="C:\MAMP\htdocs\myPhp\library-management-system\member reg\Bootstrap\css\bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <h2>Update Member</h2>
+    <form
+      action="update.php"
+      method="POST"
+      onsubmit="return validateUpdateForm()"
+    >
+      <div id="form-group">
+        <label for="member_id">Member ID:</label>
+        <input
+          type="text"
+          id="member_id"
+          name="update_member_id"
+          required
+        /><br /><br />
+      </div>
+
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="update_firstname" /><br /><br />
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="update_lastname" /><br /><br />
+
+      <label for="birthday">Birthday:</label>
+      <input type="text" id="birthday" name="update_birthday" /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="update_email" /><br /><br />
+
+      <input type="submit" value="Update" />
+    </form>
+    <script src="scripts.js"></script>
+    <script src="Bootstrap/js/member reg/bootstrap.bundle.js"></script>
+  </body>
+</html>
