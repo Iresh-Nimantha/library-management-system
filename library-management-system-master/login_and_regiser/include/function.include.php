@@ -123,25 +123,16 @@ function Login_user($db_conn,$user_Name,$user_password) {
     //when login user check a user id wheter match in database use checkinput function// 
     if ($check_input["user_id"] === "U001" || $check_input["email"] === "kamal@gmail.com" ) {
           $_SESSION["user_admin"] = true;
-          
-      } else {
-          $_SESSION["is_admin"] = false;
+          header("location:../../home page/admin/home.php?error=admin_login");
+          exit();
+        
+        } else {
+          $_SESSION["user_admin"] = false;
       }
+
 
 
     header("location:../../home page/user/home.php?error=success_login");
     exit();
   }
 } 
-
-/* <h1>This is home page</h1>
-
-<h1>hellow world  <?php  
-if(isset($_SESSION["name_user"])) {
-   echo $_SESSION["name_user"] . "!";
-} else {
-   echo "user !" ;
-}
-?>
-
-</h1> */

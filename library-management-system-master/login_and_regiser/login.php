@@ -14,7 +14,7 @@
             </div>
 
             <div class="form-group">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter passwold Here" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password Here" required>
             </div>
 
             <button name="submit" type="submit" class="btn" >Login</button>
@@ -45,7 +45,7 @@
             
             
             <p class="link"> <br> 
-                     Don't Have An Account 
+                     Don't have an Account 
 			<a href="signup.php">Sign Up </a> Here </p>
 			<p class="paragrph">Log in With</p>
         </div>
