@@ -1,5 +1,5 @@
 <?php 
-       include_once'header.php';
+       include_once 'header.php';
 ?>
         <form action="include/signup.include.php" method="post" class="mt-4">
         <div class="box" style=" height: 900px" > 
@@ -22,16 +22,16 @@
 
             
             <div class="form-group">
-            <input type="text" class="form-control" id="userid" name="userid" placeholder="Enter your  user id" required>
+            <input type="text" class="form-control" id="userid" name="userid" placeholder="Enter your  user id (format: U<BOOK_ID>)" required>
             </div>
 
 
             <div class="form-group">
-            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email address " required>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email address (Example@gmail.com) " required>
             </div>
 
             <div class="form-group">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password " required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password(must be more than 8 digits) " required>
             </div>
 
             <div class="form-group">
@@ -73,5 +73,5 @@
         </div>
         </form>
 <?php 
-       include_once'footer.php';
+       include_once 'footer.php';
 ?>

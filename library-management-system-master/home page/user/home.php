@@ -17,23 +17,22 @@
         <h1>Library Management System</h1>
       </div>
       <ul>
-        <li><a href="#home">Home</a></li>
+        <li style="float:left"><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
         <?php
-        if (isset($_SESSION["name_user"]))
-        //uncomplete admin panal. ist can user every one  
-    {
-            if (isset($_SESSION["user_admin"]) && $_SESSION["user_admin"] === true) {
-                echo '<li><a href="/library-management-system-master/home page/admin/home.html">Admin Panel</a></li>';
-            }           
-                        echo '<li style="float:right"><a href="#">'. $_SESSION["name_user"] .'</a> </li>';   
-                        echo '<li style="float:right"> <a href="/library-management-system-master/login_and_regiser/include/logout.include.php">logout <a> </li>';
-                                        
-                     } else {
-                        echo  '<li style="float:right"><a href="/library-management-system-master/login_and_regiser/login.php"> login </a> </li>';
-                      }
-                    
+        if (isset($_SESSION["name_user"])) {
+          if (isset($_SESSION["user_admin"]) && $_SESSION["user_admin"] === true) {
+            echo '<li><a href="/library-management-system-master/home page/admin/home.php">Admin Panel</a></li>';
+        }
+       
+       
+        echo '<li style="float:right"> <a href="/library-management-system-master/login_and_regiser/include/logout.include.php">logout <a> </li>';
+        echo '<li style="float:right"><a href="#">'. $_SESSION["name_user"] .'</a> </li>';                                 
+       } else {
+                 echo  '<li style="float:right"><a href="/library-management-system-master/login_and_regiser/login.php"> login </a> </li>';
+               }
+                        
           ?>
       </ul>
     </nav>
