@@ -35,7 +35,6 @@
                 <option value="C002">Adventure</option>
             </select>
         </div>
-        <!-- Hidden input to store the selected category ID -->
         <input type="hidden" id="book_category_id" name="book_category_id">
         <button type="submit" class="btn btn-primary btn-block">Register Book</button>
     </form>
@@ -43,17 +42,14 @@
     <button class="btn btn-info btn-block" onclick="showDatabaseDetails()">Show Database Details</button>
 
     <script>
-        // JavaScript to update the hidden category ID field based on the selected category
         document.getElementById('book_category').addEventListener('change', function() {
             var selectedOption = this.options[this.selectedIndex];
             document.getElementById('book_category_id').value = selectedOption.value;
         });
 
-        // Trigger change event to set initial value
         document.getElementById('book_category').dispatchEvent(new Event('change'));
 
         function showDatabaseDetails() {
-            // Redirect to a page to display database details
             window.location.href = 'database_details.php';
         }
     </script>
