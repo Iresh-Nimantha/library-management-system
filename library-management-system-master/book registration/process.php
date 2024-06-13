@@ -1,4 +1,5 @@
 <?php
+
 require 'connection.php';
 
 $error_message = "";
