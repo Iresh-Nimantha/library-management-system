@@ -2,6 +2,7 @@
 include_once 'header.php';
 
 
+
 ?>
 
 <h1 class="h_admin" > Welcome to the Admin user </t> <b> <u><?php echo $_SESSION['name_user']; ?>! </u> </b></h1>

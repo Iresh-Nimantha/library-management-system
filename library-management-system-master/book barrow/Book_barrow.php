@@ -1,5 +1,5 @@
 <?php
-//db connect
+// db connect
 $db_server = "localhost";
 $db_user = "root";
 $db_pass = "";
@@ -28,21 +28,29 @@ if (isset($_POST['submit'])) {
     $resultBook = mysqli_query($conn, $checkBookSQL);
     $isBook = mysqli_num_rows($resultBook) > 0;
 
+    // Check if borrow ID already exists
+    $checkBorrowIDSQL = "SELECT * FROM bookborrower WHERE borrow_id = '$BorrowID'";
+    $resultBorrowID = mysqli_query($conn, $checkBorrowIDSQL);
+    $isBorrowIDExists = mysqli_num_rows($resultBorrowID) > 0;
+
     if ($isMember && $isBook) {
-        $sql = "INSERT INTO bookborrower (borrow_id, book_id, member_id, borrow_status, borrower_date_modified)
-        VALUES ('$BorrowID', '$BookID', '$MemberID', '$Borrow_status', '$Modified_date')";
+        if (!$isBorrowIDExists) {
+            $sql = "INSERT INTO bookborrower (borrow_id, book_id, member_id, borrow_status, borrower_date_modified)
+            VALUES ('$BorrowID', '$BookID', '$MemberID', '$Borrow_status', '$Modified_date')";
 
-try {
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        echo "<script>alert('Data inserted successfully.');</script>";
-    } else {
-        echo "<script>alert('Failed to insert data.');</script>";
-    }
-} catch (Exception $e) {
-    echo "<script>alert('This book is already borrowed.');</script>";
-}
-
+            try {
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "<script>alert('Data inserted successfully.');</script>";
+                } else {
+                    echo "<script>alert('Failed to insert data.');</script>";
+                }
+            } catch (Exception $e) {
+                echo "<script>alert('This book is already borrowed.');</script>";
+            }
+        } else {
+            echo "<script>alert('Borrow ID already exists.');</script>";
+        }
     } else {
         echo "<script>alert('Member or book does not exist in the library.');</script>";
     }
@@ -75,7 +83,7 @@ try {
 <body>
 <div class="container">
     <h1 style="text-align: center;">Book Borrow System - Admin Panel</h1>
-    <a href="Display.php" style="float: right;"><button class="btn btn-primary" >Barrow Book List</button></a>
+    <a href="Display.php" style="float: right;"><button class="btn btn-primary">Borrow Book List</button></a>
 
     <form method="post">
         <div class="mb-3">
