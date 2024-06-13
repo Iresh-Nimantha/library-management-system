@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="bootstrap.min.css">
     <style>
         body {
-            background-color: #ffffff; /* Light dark grey color */
+            background-color: #ffffff; 
         }
         .card {
-            border: 1px solid black; /* Black border for the card */
-            border-radius: 15px; /* Rounded corners */
+            border: 1px solid black; 
+            border-radius: 15px; 
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for a lifted effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
         }
         .card-header {
             text-align: center;
@@ -25,11 +25,11 @@
             font-size: 24px;
         }
         .table thead th {
-            background-color: #007bff; /* Blue header */
+            background-color: #007bff; 
             color: white;
         }
         .table tbody tr:hover {
-            background-color: #f1f1f1; /* Light grey on hover */
+            background-color: #f1f1f1; 
         }
     </style>
 </head>
