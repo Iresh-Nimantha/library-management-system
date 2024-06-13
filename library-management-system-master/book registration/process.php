@@ -1,37 +1,40 @@
 <?php
-
 require 'connection.php';
 
+// Initialize error message and success message variables
 $error_message = "";
 $success_message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+    // Retrieve form data
     $book_id = $_POST["book_id"];
     $book_name = $_POST["book_name"];
     $book_category_id = $_POST["book_category_id"];
 
-    // Book ID format
+    // Validate Book ID format
     if (!preg_match("/^B\d{3}$/", $book_id)) {
         $error_message = "Book ID should be in the format B001.";
     } else {
-        
+        // Prepare an SQL statement to insert data into the 'books' table
         $sql = "INSERT INTO book (book_id, book_name, category_id) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         if ($stmt === false) {
-            
+            // Handle the error if the prepare() method fails
             $error_message = "Error: " . $conn->error;
         } else {
-            
+            // Bind variables to the prepared SQL statement
+            // 'sss' indicates that all three parameters are strings
+            // $book_id, $book_name, and $book_category_id are assigned to the respective placeholders ('?')
             $stmt->bind_param("sss", $book_id, $book_name, $book_category_id);
 
-            
+            // Execute the query
             if ($stmt->execute()) {
                 $success_message = "<b>$book_name book registered successfully!";
             } else {
-                
-                if ($conn->errno == 1062) { 
+                // Check if the error is due to duplicate entry
+                if ($conn->errno == 1062) { // 1062 is the MySQL error code for duplicate entry
+                    // Fetch the name of the registered book using the provided book_id
                     $sql_fetch_book_name = "SELECT book_name FROM book WHERE book_id = ?";
                     $stmt_fetch_book_name = $conn->prepare($sql_fetch_book_name);
                     $stmt_fetch_book_name->bind_param("s", $book_id);
@@ -42,16 +45,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $error_message = "This book ( $registered_book_name ) is already registered under this ID - $book_id.";
                 } else {
+                    // Handle other errors
                     $error_message = "Error: " . $stmt->error;
                 }
             }
 
+            // Close statement
             $stmt->close();
         }
     }
 }
 
-
+// Close connection
 $conn->close();
 ?>
 
@@ -77,7 +82,7 @@ $conn->close();
     <h2 class="text-center">Register a New Book</h2>
     <br>
     <?php
-
+    // Display error message if it exists
     if ($error_message) {
         echo " 
         <div class='alert alert-danger'>       
@@ -88,7 +93,7 @@ $conn->close();
         </div>";
     }
 
-
+    // Display success message if it exists
     if ($success_message) {
         echo "
         <div class='alert alert-success'>
@@ -115,7 +120,7 @@ $conn->close();
                 <option value="C002">Adventure</option>
             </select>
         </div>
-
+        <!-- Hidden input to store the selected category ID -->
         <input type="hidden" id="book_category_id" name="book_category_id">
         <button type="submit" class="btn btn-primary btn-block">Register Book</button>
     </form>
@@ -128,16 +133,17 @@ $conn->close();
         </form>
     </div>
     <script>
+        // JavaScript to update the hidden category ID field based on the selected category
         document.getElementById('book_category').addEventListener('change', function() {
             var selectedOption = this.options[this.selectedIndex];
             document.getElementById('book_category_id').value = selectedOption.value;
         });
 
-
+        // Trigger change event to set initial value
         document.getElementById('book_category').dispatchEvent(new Event('change'));
 
         function showDatabaseDetails() {
-
+            // Redirect to a page to display database details
             window.location.href = 'database_details.php';
         }
     </script>
@@ -145,5 +151,4 @@ $conn->close();
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>
