@@ -78,24 +78,24 @@ Welcome to our Library Management System! This repository contains the source co
 ### 4. Membership Management
 **Developed by Nipun Thilakshana And Chamoth Lakshitha**
 
-#### Register Member
+#### `Register Member`
 - **UI**: Provides a form for registering new members.
   - Uses Bootstrap and custom CSS for styling.
   - Includes JavaScript validation for member ID and email fields.
 - **PHP**: Handles database connection and inserts data into the 'member' table.
 
-#### Update Member
+#### `Update Member`
 - **UI**: Similar to the registration form, used for updating member details.
   - Uses the same styles and JavaScript validation as the registration form.
 - **PHP**: Handles database connection and updates member details in the 'member' table.
 
-#### Delete Member
+#### `Delete Member`
 - **Functionality**:
   - HTML form allows library staff to enter the member ID.
   - JavaScript confirms deletion.
   - PHP script deletes the member from the database.
 
-#### View Members
+#### `View Members`
 - **Functionality**:
   - Displays a table with member ID, first name, last name, birthday, and email address.
   - Uses HTML, PHP, and JavaScript to fetch and display member details.
