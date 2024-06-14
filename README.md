@@ -52,7 +52,7 @@ Welcome to our Library Management System! This repository contains the source co
   - Closes the database connection and provides feedback on success or failure.
 
 ### 3. Book Registration
-**Developed by Pasindu Lakruwan**
+**Developed by Pasindu Lakruwan and Nethmin Kavindu**
 
 #### `book_registration_index.php`
 - **Purpose**: Main page for registering new books.
@@ -76,7 +76,7 @@ Welcome to our Library Management System! This repository contains the source co
   - Ensures borrowed books cannot be deleted to maintain data integrity.
 
 ### 4. Membership Management
-**Developed by Nipun**
+**Developed by Nipun Thilakshana And Chamoth Lakshitha**
 
 #### Register Member
 - **UI**: Provides a form for registering new members.
