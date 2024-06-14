@@ -75,7 +75,7 @@ try {
 <body>
 <div class="container">
     <h1 style="text-align: center;">Book Borrow System - Admin Panel</h1>
-    <a href="Display.php" style="float: right;"><button class="btn btn-primary" >Barrow Book List</button></a>
+    <a href="Display.php" style="float: right;"><button class="btn btn-primary" >Barrow Book List</button></a><br>
 
     <form method="post">
         <div class="mb-3">
