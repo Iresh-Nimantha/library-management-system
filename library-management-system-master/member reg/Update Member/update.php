@@ -17,22 +17,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $birthday = $_POST["update_birthday"];
     $email = $_POST["update_email"];
 
-    $fields = [];
-    if ($firstname) $fields[] = "first_name='$firstname'";
-    if ($lastname) $fields[] = "last_name='$lastname'";
-    if ($birthday) $fields[] = "birthday='$birthday'";
-    if ($email) $fields[] = "email='$email'";
+    
+    $check_sql = "SELECT member_id FROM member WHERE member_id='$member_id'";
+    $result = $conn->query($check_sql);
 
-    if (!empty($fields)) {
-        $sql = "UPDATE member SET " . implode(", ", $fields) . " WHERE member_id='$member_id'";
+    if ($result->num_rows > 0) {
+        $fields = [];
+        if ($firstname) $fields[] = "first_name='$firstname'";
+        if ($lastname) $fields[] = "last_name='$lastname'";
+        if ($birthday) $fields[] = "birthday='$birthday'";
+        if ($email) $fields[] = "email='$email'";
 
-        if ($conn->query($sql) === TRUE) {
-            echo "Member updated successfully";
+        if (!empty($fields)) {
+            $sql = "UPDATE member SET " . implode(", ", $fields) . " WHERE member_id='$member_id'";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "Member updated successfully";
+            } else {
+                echo "Error updating record: " . $conn->error;
+            }
         } else {
-            echo "Error updating record: " . $conn->error;
+            echo "No fields to update";
         }
     } else {
-        echo "No fields to update";
+        
+        echo "Invalid user or deleted user";
     }
 
     $conn->close();
